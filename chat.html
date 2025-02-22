@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light/Dark Mode Toggle</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            transition: background 0.3s, color 0.3s;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .light-mode {
+            background: #ffffff;
+            color: #000000;
+        }
+        .dark-mode {
+            background: #121212;
+            color: #ffffff;
+        }
+        .header {
+            width: 100%;
+            background: #f0f0f0;
+            color: #000;
+            padding: 15px;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            transition: background 0.3s, color 0.3s;
+        }
+        .dark-mode .header {
+            background: #333;
+            color: #fff;
+        }
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background: #ddd;
+            position: fixed;
+            top: 50px;
+            left: 0;
+            padding: 20px;
+            box-sizing: border-box;
+            transition: background 0.3s;
+        }
+        .dark-mode .sidebar {
+            background: #222;
+        }
+        .content {
+            margin-left: 260px;
+            margin-top: 70px;
+            padding: 20px;
+            flex: 1;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 10px 20px;
+            background: #0ef;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .toggle-btn:hover {
+            background: #0bc;
+        }
+    </style>
+</head>
+<body class="light-mode">
+    <div class="header">My Website</div>
+    <div class="sidebar">
+        <p>Sidebar Menu</p>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        <button class="toggle-btn" onclick="toggleMode()">Switch to Dark Mode</button>
+        <p>Welcome to my website. Toggle the button to switch between light and dark modes.</p>
+    </div>
+    <script>
+        function toggleMode() {
+            const body = document.body;
+            const button = document.querySelector('.toggle-btn');
+            body.classList.toggle('dark-mode');
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                button.textContent = "Switch to Light Mode";
+            } else {
+                button.textContent = "Switch to Dark Mode";
+            }
+        }
+    </script>
+</body>
+</html>
